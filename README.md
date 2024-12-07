@@ -29,14 +29,19 @@ The framework:
    pip install -r requirements.txt
    ```
 
-3. Add the `jq` query functions to your shell configuration (optional):
+3. Add the `jq` query functions to your environment:
    ```bash
-   nano ~/.bashrc  # Or ~/.zshrc for zsh users
+   source jq_functions.sh
+   ```
+
+4. Add the `jq` query functions to your shell configuration (optional):
+   ```bash
+   vi ~/.zshrc  # Or ~/.bashrc for bash users
    ```
 
    Add the functions provided in this repository’s documentation, then reload your shell:
    ```bash
-   source ~/.bashrc
+   source ~/.zshrc
    ```
 
 ## **Usage**
@@ -77,6 +82,7 @@ jq_totals_with_prompts results.json
 ```
 llm-adversarial-testing/
 ├── adversarial_prompts.yaml   # Configuration of adversarial prompts
+├── jq_functions.sh            # jq functions (source beofre running test_framework)
 ├── results.json               # JSON output of test results
 ├── test_framework.py          # Main testing script
 ├── requirements.txt           # Python dependencies
