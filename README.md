@@ -1,6 +1,6 @@
 # **LLM Adversarial Testing Framework**
 
-This project provides a framework for testing Large Language Models (LLMs) using adversarial prompts to identify vulnerabilities, evaluate performance, and ensure security and ethical compliance.
+This project provides a very basic framework for testing Large Language Models (LLMs) using adversarial prompts to identify vulnerabilities, evaluate performance, and ensure security and ethical compliance. It is designed as a learning exercise.
 
 ## **Overview**
 
@@ -44,6 +44,44 @@ The framework:
    source ~/.zshrc
    ```
 
+5. Set the OpenAI API key:
+   The framework requires an OpenAI API key. Ensure the key is set as an environment variable before running the script.
+
+   #### Temporary (Recommended)
+   For security, set the key only for the current terminal session:
+   ```bash
+   export OPENAI_API_KEY="your-api-key-here"
+   ```
+
+   On Windows:
+   ```cmd
+   set OPENAI_API_KEY="your-api-key-here"
+   ```
+
+   #### Optional: Persistent (Less Secure)
+   To persistently set the key:
+   - On Linux/MacOS: Add the following to your shell configuration file (e.g., `~/.zshrc` or `~/.bashrc`):
+     ```bash
+     export OPENAI_API_KEY="your-api-key-here"
+     ```
+     Reload the shell:
+     ```bash
+     source ~/.zshrc  # or ~/.bashrc
+     ```
+
+   - On Windows:
+     ```cmd
+     setx OPENAI_API_KEY "your-api-key-here"
+     ```
+
+   ⚠️ **Warning:** Storing sensitive keys in startup files can be insecure, especially on shared systems. Use this approach only if you understand the risks.
+
+   #### Verify the Environment Variable
+   To verify that the API key is set correctly:
+   ```bash
+   echo $OPENAI_API_KEY
+   ```
+
 ## **Usage**
 
 ### **Run Tests**
@@ -82,7 +120,7 @@ jq_totals_with_prompts results.json
 ```
 llm-adversarial-testing/
 ├── adversarial_prompts.yaml   # Configuration of adversarial prompts
-├── jq_functions.sh            # jq functions (source beofre running test_framework)
+├── jq_functions.sh            # jq functions (source before running test_framework)
 ├── results.json               # JSON output of test results
 ├── test_framework.py          # Main testing script
 ├── requirements.txt           # Python dependencies
@@ -119,6 +157,9 @@ Update `expected` responses in `adversarial_prompts.yaml` as needed to align wit
 
 3. **Integrate with CI/CD**:
    - Schedule periodic runs of the framework or integrate into pipelines to ensure continuous validation of LLM updates.
+
+4. **Add Models**:
+   - Refactor to allow easily selecting other online or local models.
 
 ## **License**
 
